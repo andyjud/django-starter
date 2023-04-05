@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block library %}{% endblock %}
+    <style type="text/tailwindcss">
+        [x-cloak] { 
+            display: none !important; 
+        }
+        h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            background-color: white;
+            padding: 2rem;
+        }
+        input {
+            @apply 
+            bg-gray-50 border border-gray-300 rounded-lg
+            p-2.5 text-gray-900 text-sm block w-full
+            focus:ring-blue-500 focus:border-blue-500;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        .button, button, [type='submit'], [type='button'] {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            text-align: center;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            padding: 0 1rem;
+            min-height: 3.3rem;
+            font-weight: 600;
+            box-shadow: 0 4px 3px rgba(0, 0, 0, 0.1);
+            transition-property: transform;
+            transition-duration: .2s;
+            color: white;
+            background-color: rgb(88, 40, 244);
+            width: fit-content;
+        }
+        .button:hover, button:hover, [type='submit']:hover, [type='button']:hover {
+            background-color: rgb(88, 40, 244);
+        }
+        .button:active, button:active, [type='submit']:active, [type='button']:active {
+            transform: scale(0.95);
+        }
+        .secondaryAction {
+            background-color: white;
+            color: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+        .secondaryAction:hover, .button.secondaryAction:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        label[for="id_remember"] {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+        input[name="remember"] {
+            width: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+<header class="flex items-center px-8 bg-gray-800 h-20 text-white sticky top-0 z-40">
+    <a href="/">
+        <span class="text-xl font-bold">Django</span>
+    </a>
+</header>
+
+<content class="block max-w-2xl mx-auto mt-12 px-6">
+
+    <div class="card">
+
+    {% block content %}
+    {% endblock %}
+
+    </div>
+
+</content>
+
+{% block javascript %}{% endblock %}
+    
+</body>
+</html>
+    
