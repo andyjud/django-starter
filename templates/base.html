@@ -85,10 +85,19 @@
     
 {% include 'includes/messages.html' %}
 
-<header class="flex items-center px-8 bg-gray-800 h-20 text-white sticky top-0 z-40">
+<header class="flex items-center justify-between px-10 bg-gray-800 h-20 text-white sticky top-0 z-40">
     <a href="/">
         <span class="text-xl font-bold">Django</span>
     </a>
+    <ul class="flex items-center gap-8 h-full">
+        {% if user.is_authenticated %}
+        <li>{{ user.username }}</li>
+        <li><a href="{% url 'account_logout' %}">Log Out</a></li>
+        {% else %}
+        <li><a href="{% url 'account_login' %}">Log In</a></li>
+        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+        {% endif %}
+    </ul>
 </header>
 
 <content class="block max-w-2xl mx-auto mt-12 px-6">
