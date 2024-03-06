@@ -1,0 +1,5 @@
+Django
+pillow
+django-cleanup
+django-allauth
+django-htmx
