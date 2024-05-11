@@ -1,6 +1,8 @@
 venv/
+node/
 media/
-__pycache__/
 migrations/
+__pycache__/
 db.sqlite3
+.env
 .DS_Store
