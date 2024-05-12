@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
     'django_htmx',
     'a_home',
     'a_users',
