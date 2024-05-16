@@ -21,6 +21,8 @@ venv\Scripts\activate.bat
 pip install -r requiremenets.txt
 ```
 
+<br>
+
 #### - Get Secret Key
 ```
 python manage.py shell
