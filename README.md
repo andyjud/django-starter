@@ -18,6 +18,7 @@ venv\Scripts\activate.bat
 
 #### - Install dependencies
 ```
+pip install --upgrade pip
 pip install -r requiremenets.txt
 ```
 
@@ -31,20 +32,17 @@ print(get_random_secret_key())
 exit()
 ```
 
-#### - Run application
-```
-python manage.py runserver
-```
+<br>
+
 #### - Migrate to database
 ```
 python manage.py migrate
-```
-#### - Start App
-```
-python manage.py startapp app_name
+python manage.py createsuperuser
 ```
 
+<br>
 
-admin.site.register(Message)
-admin.site.register(Conversation)
+#### - Run application
+```
+python manage.py runserver
 ```
