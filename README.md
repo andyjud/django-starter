@@ -24,16 +24,6 @@ pip install -r requiremenets.txt
 
 <br>
 
-#### - Get Secret Key
-```
-python manage.py shell
-from django.core.management.utils import get_random_secret_key
-print(get_random_secret_key())
-exit()
-```
-
-<br>
-
 #### - Migrate to database
 ```
 python manage.py migrate
@@ -46,3 +36,15 @@ python manage.py createsuperuser
 ```
 python manage.py runserver
 ```
+
+<br>
+
+#### - Get Secret Key !! Important for deployment !!
+```
+python manage.py shell
+from django.core.management.utils import get_random_secret_key
+print(get_random_secret_key())
+exit()
+```
+
+
