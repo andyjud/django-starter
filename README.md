@@ -29,7 +29,7 @@ venv\Scripts\activate.bat
 #### - Install dependencies
 ```
 pip install --upgrade pip
-pip install -r requiremenets.txt
+pip install -r requirements.txt
 ```
 
 <br>
