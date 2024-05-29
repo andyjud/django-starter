@@ -2,7 +2,8 @@
 https://youtu.be/SQ4A7Q6_md8
 <br><br>
 
-###### # Download and remove git folder
+###### # Download zip file or 
+###### # Clone with git + remove git folder
 ```
 git clone https://github.com/andyjud/django-starter.git . && rm -rf .git
 ```
