@@ -1,5 +1,11 @@
 #### Video Tutorial of this project
 https://youtu.be/SQ4A7Q6_md8
+<br><br>
+
+###### # Download and remove git folder
+```
+git clone https://github.com/andyjud/django-starter.git . && rm -rf .git
+```
 <br><br><br>
 
 ## Setup
