@@ -1,14 +1,6 @@
-#### Video Tutorial of this project
-https://youtu.be/SQ4A7Q6_md8
-<br><br>
-
 #### Getting the files
-Download zip file or <br>
-Clone with git + remove git folder
-```
-git clone https://github.com/andyjud/django-starter.git . && rm -rf .git
-```
-<br><br><br>
+Download zip file
+<br><br>
 
 ## Setup
 
