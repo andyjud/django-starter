@@ -6,6 +6,7 @@
 <br>
 <li>Extract the project files into the crated folder.</li>
 <br>
+</ol>
 ##### For Example folder was created on Desktop with name "project" then extract files to "project" folder
 <br><br>
 ## Setup
