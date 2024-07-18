@@ -1,11 +1,12 @@
 #### Getting the files
-Download zip file
+<ol>
+<li>Download zip file</li>
 <br>
-Create a new folder to extract the project zip file into it
+<li>Create a new folder to extract the project zip file into it</li>
 <br>
-Extract the project files into the crated folder.
+<li>Extract the project files into the crated folder.</li>
 <br>
-If folder was create on Desktop with name "project" then extract files to "project" folder
+##### For Example folder was created on Desktop with name "project" then extract files to "project" folder
 <br><br>
 ## Setup
 #### - Change Working Directory to "project" folder
