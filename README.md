@@ -1,8 +1,18 @@
 #### Getting the files
 Download zip file
+<br>
+Create a new folder to extract the project zip file into it
+<br>
+Extract the project files into the crated folder.
+<br>
+If folder was create on Desktop with name "project" then extract files to "project" folder
 <br><br>
-
 ## Setup
+#### - Change Working Directory to "project" folder
+Open Command Prompt and execute following commands:
+```
+cd <project_folder_path>
+```
 
 #### - Create Virtual Environment
 ###### # Mac
@@ -33,7 +43,11 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py createsuperuser
 ```
-
+##### While creating superuser i.e. executing last step, remember the USER_EMAIL AND PASSWORD, because the superuser acts as admin to the Django app and can be used to monitior application data by using below URL after running application (will be seen in next step):
+###### # URL
+```
+http://localhost:8000/admin
+```
 <br>
 
 #### - Run application
