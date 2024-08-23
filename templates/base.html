@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Template website">
     <title>Project Title</title>
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -99,16 +100,16 @@
         .alert-danger { @apply bg-red-600 }
     </style>
 </head>
-<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' class="{% block class %}{% endblock %}">
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' class="{% block class %}{% endblock class %}">
 	
-    {% include 'includes/messages.html' %}
+    {% include "includes/messages.html" %}
 
-    {% include 'includes/header.html' %}
+    {% include "includes/header.html" %}
 
     {% block layout %}
-    {% endblock %}
+    {% endblock layout %}
 
-    {% block javascript %}{% endblock %}
+    {% block javascript %}{% endblock javascript %}
 
 </body>
 </html>
