@@ -36,6 +36,13 @@ pip install -r requirements.txt
 
 <br>
 
+#### - Collect static files
+```
+python manage.py collectstatic
+```
+
+<br>
+
 #### - Migrate to database
 ```
 python manage.py migrate
