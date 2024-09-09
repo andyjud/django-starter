@@ -4,6 +4,7 @@ from allauth.account.utils import send_email_confirmation
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from django.contrib.auth.views import redirect_to_login
 from django.contrib import messages
 from .forms import *
 
@@ -14,7 +15,7 @@ def profile_view(request, username=None):
         try:
             profile = request.user.profile
         except:
-            return redirect('account_login')
+            return redirect_to_login(request.get_full_path())
     return render(request, 'a_users/profile.html', {'profile':profile})
 
 
