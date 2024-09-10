@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_htmx',
     'a_home',
     'a_users',
+    'django_gravatar',
 ]
 
 SITE_ID = 1
@@ -150,3 +151,6 @@ ACCOUNT_SIGNUP_REDIRECT_URL = "{% url 'account_signup' %}?next={% url 'profile-o
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
+
+# GRAVATAR_ENABLE = True
+GRAVATAR_DEFAULT_SIZE = 150

@@ -3,3 +3,4 @@ pillow
 django-cleanup
 django-allauth
 django-htmx
+django-gravatar2
