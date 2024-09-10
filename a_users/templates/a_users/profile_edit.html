@@ -10,6 +10,15 @@
 
 <div class="text-center flex flex-col items-center">
     <img id="avatar" class="w-36 h-36 rounded-full object-cover my-4" src="{{ user.profile.avatar }}" />
+    {% if user.profile.image %}
+    <form
+        hx-post="{% url 'remove_profile_avatar' %}"
+        hx-confirm="Are you sure you wish to delete your avatar image?"
+        class="mb-4"
+    >
+        <input type="submit" value="Remove avatar" class="button" />
+    </form>
+    {% endif %}
     <div class="text-center max-w-md">
         <h1 id="displayname">{{ user.profile.displayname|default:"" }}</h1>
         <div class="text-gray-400 mb-2 -mt-3">@{{ user.username }}</div>
@@ -22,7 +31,7 @@
     {% if onboarding %}
     <a class="button button-gray ml-1" href="{% url 'home' %}">Skip</a>
     {% else %}
-    <a class="button button-gray ml-1" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
+    <a class="button button-gray ml-1" href="{% url 'profile' %}">Cancel</a>
     {% endif %}
 </form>
 

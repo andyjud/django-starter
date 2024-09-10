@@ -9,4 +9,5 @@ urlpatterns = [
     path('emailchange/', profile_emailchange, name="profile-emailchange"),
     path('emailverify/', profile_emailverify, name="profile-emailverify"),
     path('delete/', profile_delete_view, name="profile-delete"),
+    path('remove_avatar/', remove_avatar, name="remove_profile_avatar"),
 ]
