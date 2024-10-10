@@ -21,8 +21,7 @@ source venv/bin/activate
 
 ###### # Windows
 ```
-pip install virtualenv 
-virtualenv venv 
+python3 -m venv venv
 .\venv\Scripts\activate.bat
 ```
 
