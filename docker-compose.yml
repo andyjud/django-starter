@@ -19,7 +19,9 @@ services:
       - ./templates:/app/templates
       - ./manage.py:/app/manage.py
       - /app/.venv
-    command: ["uv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+    entrypoint: ["./entrypoint.sh"]
+    command: ["./start.sh"]
+    # command: ["sh", "-c", "ls -la /app && cat /app/start.sh && ./start.sh"]
     depends_on:
       - db
 
