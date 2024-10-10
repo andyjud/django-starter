@@ -1,0 +1,9 @@
+[project]
+name = "django-docker-starter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django-browser-reload>=1.15.0",
+]

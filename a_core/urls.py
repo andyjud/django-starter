@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include('a_home.urls')),
     path('profile/', include('a_users.urls')),
     path('@<username>/', profile_view, name="profile"),
+    path("__reload__/", include("django_browser_reload.urls")),
 ]
 
 # Only used when DEBUG=True, whitenoise can serve files when DEBUG=False
