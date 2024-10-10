@@ -1,0 +1,13 @@
+.venv
+.env
+.lock
+.md
+.python-version
+.DS_Store
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.pid
