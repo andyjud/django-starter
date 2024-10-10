@@ -3,11 +3,32 @@ name: django-app
 services:
   app:
     build: .
-    container_name: app-container_name
+    container_name: app-container
     image: app-image
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
     ports:
       - "8000:8000"
     volumes:
       - .:/app
       - /app/.venv
     command: ["uv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    container_name: db-container
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

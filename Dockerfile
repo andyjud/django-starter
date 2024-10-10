@@ -12,10 +12,6 @@ RUN uv sync --frozen
 
 COPY . .
 
-# Run as non-root user for security best practices
-RUN adduser -D appuser
-USER appuser
-
 # Expose the port the app runs on (not required)
 EXPOSE 8000
 

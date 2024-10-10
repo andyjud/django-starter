@@ -11,3 +11,5 @@
 *.sqlite3
 *.log
 *.pid
+staticfiles
+docker-compose.yml
