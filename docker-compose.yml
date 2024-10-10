@@ -12,7 +12,12 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
+      - ./a_core:/app/a_core
+      - ./a_home:/app/a_home
+      - ./a_users:/app/a_users
+      - ./static:/app/static
+      - ./templates:/app/templates
+      - ./manage.py:/app/manage.py
       - /app/.venv
     command: ["uv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
     depends_on:
