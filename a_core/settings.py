@@ -18,7 +18,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 env = Env(
-    DEBUG=(bool, False),
+    ENVIRONMENT=(str, 'development'),
     SECRET_KEY=(str, ''),
     ALLOWED_HOSTS=(list, []),
     CSRF_TRUSTED_ORIGINS=(list, []),
@@ -36,7 +36,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-rj#-z^kx3j+1ay397otg6j8m_8#v^$^$jys6&41vy^&6le)ezc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+ENVIRONMENT = env('ENVIRONMENT')
+if ENVIRONMENT == 'development':
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
