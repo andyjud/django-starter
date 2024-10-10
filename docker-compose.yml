@@ -1,0 +1,13 @@
+name: django-app
+
+services:
+  app:
+    build: .
+    container_name: app-container_name
+    image: app-image
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - /app/.venv
+    command: ["uv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
