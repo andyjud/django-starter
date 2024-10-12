@@ -23,6 +23,10 @@ env = Env(
     ALLOWED_HOSTS=(list, []),
     CSRF_TRUSTED_ORIGINS=(list, []),
     DATABASE_URL=(str, ''),
+    USE_CLOUDINARY=(bool, False),
+    CLOUDINARY_CLOUD_NAME=(str, ''),
+    CLOUDINARY_API_KEY=(str, ''),
+    CLOUDINARY_API_SECRET=(str, ''),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -55,6 +59,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'django_cleanup.apps.CleanupConfig',
     'django.contrib.sites',
     'django_browser_reload',
@@ -164,7 +170,21 @@ STATICFILES_DIRS = [ BASE_DIR / 'static' ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media' 
+
+USE_CLOUDINARY = env('USE_CLOUDINARY')
+if USE_CLOUDINARY:
+    STORAGES = {
+        'default': {'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage'}, # use cloudinary for media
+        'staticfiles': {'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage'},
+    }
+
+    CLOUDINARY_STORAGE = {
+        'cloud_name': env('CLOUDINARY_CLOUD_NAME'),
+        'api_key': env('CLOUDINARY_API_KEY'),
+        'api_secret': env('CLOUDINARY_API_SECRET')
+    }
+else:
+    MEDIA_ROOT = BASE_DIR / 'media' 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
