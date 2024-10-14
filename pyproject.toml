@@ -16,4 +16,5 @@ dependencies = [
     "django-environ>=0.11.2",
     "gunicorn>=23.0.0",
     "django-cloudinary-storage>=0.3.0",
+    "django-resized>=1.0.3",
 ]

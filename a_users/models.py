@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+from django_resized import ResizedImageField
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    image = ResizedImageField(size=[400, 400], quality=85, upload_to='avatars/', null=True, blank=True)
     displayname = models.CharField(max_length=20, null=True, blank=True)
     info = models.TextField(null=True, blank=True) 
     
