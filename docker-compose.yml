@@ -63,6 +63,18 @@ services:
       - redis
       - db
 
+  flower:
+    image: app-image
+    container_name: flower-container
+    # entrypoint: ["./entrypoint.sh"]
+    command: ["celery", "-A", "a_core", "flower", "--basic_auth=${FLOWER_USER}:${FLOWER_PASSWORD}"]
+    env_file:
+      - .env
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+
 volumes:
   postgres_data:
   redis_data:
