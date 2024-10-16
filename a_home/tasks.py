@@ -12,3 +12,9 @@ def count_task():
         time.sleep(1)
     logger.info("Task completed!")
     return 'Task Done!'
+
+@shared_task
+def example_periodic_task():
+    # Your task logic here
+    print("Running periodic task")
+    # You could send emails, clean up old data, generate reports, etc.

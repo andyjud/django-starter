@@ -14,6 +14,7 @@ from pathlib import Path
 from environ import Env
 import dj_database_url
 import logging
+from celery.schedules import crontab
 
 logger = logging.getLogger(__name__)
 
@@ -65,6 +66,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_browser_reload',
     'django_celery_results',
+    'django_celery_beat',
     'allauth',
     'allauth.account',
     'django_htmx',
@@ -190,6 +192,14 @@ else:
 CELERY_BROKER_URL = 'redis://redis:6379/0'
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_RESULT_EXTENDED = True
+
+CELERY_BEAT_SCHEDULE = {
+    'example-periodic-task': {
+        'task': 'a_home.tasks.example_periodic_task',
+        'schedule': crontab(minute='*/15'),  # Run every 15 minutes
+    },
+    # Add more periodic tasks here
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

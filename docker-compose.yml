@@ -75,6 +75,22 @@ services:
     depends_on:
       - redis
 
+  beat:
+    image: app-image
+    container_name: beat-container
+    command: ["celery", "-A", "a_core", "beat", "-l", "INFO", "--scheduler", "django_celery_beat.schedulers:DatabaseScheduler"]
+    volumes:
+      - ./a_core:/app/a_core
+      - ./a_home:/app/a_home
+      - ./a_users:/app/a_users
+      - ./static:/app/static
+      - ./templates:/app/templates
+      - ./manage.py:/app/manage.py
+      - /app/.venv
+    depends_on:
+      - redis
+      - app
+
 volumes:
   postgres_data:
   redis_data:
