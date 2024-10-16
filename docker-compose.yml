@@ -19,7 +19,6 @@ services:
       - ./templates:/app/templates
       - ./manage.py:/app/manage.py
       - /app/.venv
-    entrypoint: ["./entrypoint.sh"]
     command: ["./start.sh"]
     # command: ["sh", "-c", "ls -la /app && cat /app/start.sh && ./start.sh"]
     depends_on:
@@ -48,7 +47,6 @@ services:
   celery:
     container_name: celery-container
     image: app-image
-    entrypoint: ["./entrypoint.sh"]
     command: ["celery", "-A", "a_core", "worker", "-E", "-l", "info"]
     volumes:
       - ./a_core:/app/a_core
@@ -66,7 +64,6 @@ services:
   flower:
     image: app-image
     container_name: flower-container
-    # entrypoint: ["./entrypoint.sh"]
     command: ["celery", "-A", "a_core", "flower", "--basic_auth=${FLOWER_USER}:${FLOWER_PASSWORD}"]
     env_file:
       - .env

@@ -15,3 +15,8 @@ COPY . .
 
 # Expose the port the app runs on (not required)
 EXPOSE 8000
+
+COPY entrypoint.sh ./
+RUN chmod +x ./entrypoint.sh
+
+ENTRYPOINT ["/app/entrypoint.sh"]
