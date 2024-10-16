@@ -28,6 +28,7 @@ env = Env(
     CLOUDINARY_CLOUD_NAME=(str, ''),
     CLOUDINARY_API_KEY=(str, ''),
     CLOUDINARY_API_SECRET=(str, ''),
+    CELERY_BROKER_URL=(str, ''),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -189,7 +190,7 @@ if USE_CLOUDINARY:
 else:
     MEDIA_ROOT = BASE_DIR / 'media' 
 
-CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_BROKER_URL = env('DATABASE_URL', default='redis://redis:6379/0')
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_RESULT_EXTENDED = True
 
