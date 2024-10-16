@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'django.contrib.sites',
     'django_browser_reload',
+    'django_celery_results',
     'allauth',
     'allauth.account',
     'django_htmx',
@@ -185,6 +186,10 @@ if USE_CLOUDINARY:
     }
 else:
     MEDIA_ROOT = BASE_DIR / 'media' 
+
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_EXTENDED = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

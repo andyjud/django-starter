@@ -18,4 +18,6 @@ dependencies = [
     "django-cloudinary-storage>=0.3.0",
     "django-resized>=1.0.3",
     "redis>=5.1.1",
+    "celery>=5.4.0",
+    "django-celery-results>=2.5.1",
 ]

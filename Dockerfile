@@ -2,7 +2,8 @@ FROM ghcr.io/astral-sh/uv:python3.12-alpine
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    PATH="/app/.venv/bin:$PATH"
 
 WORKDIR /app/
 

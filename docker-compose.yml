@@ -45,6 +45,24 @@ services:
     volumes:
       - redis_data:/data
 
+  celery:
+    container_name: celery-container
+    image: app-image
+    entrypoint: ["./entrypoint.sh"]
+    command: ["celery", "-A", "a_core", "worker", "-E", "-l", "info"]
+    volumes:
+      - ./a_core:/app/a_core
+      - ./a_home:/app/a_home
+      - ./a_users:/app/a_users
+      - ./static:/app/static
+      - ./templates:/app/templates
+      - ./manage.py:/app/manage.py
+      - /app/.venv
+    depends_on:
+      - app
+      - redis
+      - db
+
 volumes:
   postgres_data:
   redis_data:
