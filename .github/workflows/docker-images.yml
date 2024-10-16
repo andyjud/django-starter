@@ -1,0 +1,28 @@
+name: Publish Docker Image
+
+on:
+  push:
+    branches:
+      - production
+  pull_request:
+    branches:
+      - production
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        run: |
+          echo "${{ secrets.DOCKER_PAT }}" | docker login ghcr.io -u jsnyde0 --password-stdin
+
+      - name: Build Docker image
+        run: |
+          docker build . -t ghcr.io/jsnyde0/app-image:latest
+
+      - name: Push Docker image
+        run: |
+          docker push ghcr.io/jsnyde0/app-image:latest
