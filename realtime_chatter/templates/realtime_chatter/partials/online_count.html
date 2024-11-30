@@ -10,8 +10,17 @@
         }
     </style> 
 </span>
+
 {% if online_count != 0 %}
-<div id="online-icon" class="absolute top-2 left-2 rounded-full bg-green-500 p-1.5"></div>
+<div id="online-icon" class="green-dot absolute top-2 left-2"></div>
 {% else %}
-<div id="online-icon" class="absolute top-2 left-2 rounded-full bg-gray-500 p-1.5"></div>
+<div id="online-icon" class="gray-dot absolute top-2 left-2"></div>
 {% endif %}
+
+{% for user in users %}
+    {% if user in chat_group.users_online.all %}
+    <div id= "user-{{ user.id }}" class= "green-dot border-2 border-gray-800 absolute -bottom-1 -right-2"></div>
+    {% else %}
+    <div id= "user-{{ user.id }}" class= "gray-dot border-2 border-gray-800 absolute -bottom-1 -right-2"></div>
+    {% endif %}
+{% endfor %}

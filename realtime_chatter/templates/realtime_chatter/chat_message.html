@@ -1,8 +1,8 @@
 {% if message.author == user %}
-<li>
+<li id="chat_from_me">
     <div class="flex justify-end mb-1">
         <div class="bg-green-200 rounded-l-lg rounded-tr-lg p-4 max-w-[75%]">
-            <span>{{ message.body }}</span>
+            <span id="message_body">{{ message.body }}</span>
         </div>
         <div class="flex items-end">
             <svg height="13" width="8" >
@@ -11,16 +11,19 @@
         </div>
     </div>
     <div class="flex justify-end text-sm font-light mb-3">
-        <span class="text-white pr-1">You</span>
-        <span class="text-gray-400 ">{{ message.created }}</span>
+        <span id="message_author" class="text-white pr-1">You</span>
+        <span id="message_createtime" class="text-gray-400 ">{{ message.created }}</span>
     </div>
 </li>
 {% else %}
-<li>
+<li id="chat_from_sender">
     <div class="flex justify-start">
         <div class="flex items-end mr-2" >
             <a href="{% url 'profile' message.author.username %}">
-                <img class="w-8 h-8 rounded-full object-cover" src="{{ message.author.profile.avatar }}">
+                <div class= "relative">
+                    <div id="user-{{ message.author.id }}"></div>
+                    <img class="w-8 h-8 rounded-full object-cover" src="{{ message.author.profile.avatar }}">
+                </div>
             </a>
         </div>
         <div class="flex items-end" >
@@ -29,12 +32,12 @@
             </svg>
         </div>
         <div class="bg-white p-4 max-w-[75%] rounded-r-lg rounded-tl-lg">
-            <span>{{ message.body }}</span>
+            <span id="message_body">{{ message.body }}</span>
         </div>  
     </div>
     <div class="text-sm font-light py-1 ml-10">
-        <span class="text-white">{{ message.author.profile.name }}</span> 
-        <span class="text-gray-400">{{ message.created }}</span>
+        <span id="message_author" class="text-white">{{ message.author.profile.name }}</span> 
+        <span id="message_createtime" class="text-gray-400">{{ message.created }}</span>
     </div>
 </li>
 {% endif %}

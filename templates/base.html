@@ -97,6 +97,15 @@
         .alert-success { @apply bg-emerald-600 }
         .alert-warning { @apply bg-orange-600 }
         .alert-danger { @apply bg-red-600 }
+        .green-dot {
+            @apply rounded-full bg-green-500 p-1.5
+        }
+        .gray-dot {
+            @apply rounded-full bg-gray-500 p-1.5
+        }
+        .graylight-dot {
+            @apply rounded-full bg-gray-300 p-1.5
+        }
     </style>
 </head>
 <body class="{% block class %}{% endblock %}">
@@ -107,6 +116,10 @@
 
     {% block layout %}
     {% endblock %}
+
+    {% if user.is_authenticated %}
+    <footer hx-ext="ws" ws-connect= "/ws/online-status"></footer>
+    {% endif %}
 
     {% block javascript %}{% endblock %}
 
