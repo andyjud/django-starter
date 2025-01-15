@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'django_htmx',
+
+    # My apps
     'a_home',
     'a_users',
 ]
