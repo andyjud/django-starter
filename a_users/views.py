@@ -69,10 +69,30 @@ def profile_emailchange(request):
             
             return redirect('profile-settings')
         else:
-            messages.warning(request, 'Form not valid')
+            messages.warning(request, 'Email not valid or already in use')
             return redirect('profile-settings')
         
-    return redirect('home')
+    return redirect('profile-settings')
+
+
+@login_required
+def profile_usernamechange(request):
+    if request.htmx:
+        form = UsernameForm(instance=request.user)
+        return render(request, 'partials/username_form.html', {'form':form})
+    
+    if request.method == 'POST':
+        form = UsernameForm(request.POST, instance=request.user)
+        
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Username updated successfully.')
+            return redirect('profile-settings')
+        else:
+            messages.warning(request, 'Username not valid or already in use')
+            return redirect('profile-settings')
+    
+    return redirect('profile-settings')    
 
 
 @login_required
