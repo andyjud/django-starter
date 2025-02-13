@@ -20,3 +20,9 @@ class EmailForm(ModelForm):
     class Meta:
         model = User
         fields = ['email']
+
+
+class UsernameForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['username']
