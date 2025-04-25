@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_cleanup.apps.CleanupConfig',
+    'django_htmx',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -155,14 +156,10 @@ STATICFILES_DIRS = [ BASE_DIR / 'static' ]
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media' 
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
-ACCOUNT_SIGNUP_REDIRECT_URL = "{% url 'account_signup' %}?next={% url 'profile-onboarding' %}"
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_EMAIL_REQUIRED = True

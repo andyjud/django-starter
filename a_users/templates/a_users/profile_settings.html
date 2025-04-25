@@ -22,6 +22,7 @@
                 </a>
             </td>
         </tr>
+
         <tr class="border-b">
             <th scope="row" class="pb-4 font-medium text-gray-900">  
             </th>
@@ -39,6 +40,23 @@
         </tr>
 
         <tr class="border-b">
+            <th scope="row" class="py-4 text-base font-bold text-gray-900">
+                Username
+            </th>
+            <td id="username" class="py-4 pl-4">
+                {{ user.username }}
+            </td>
+            <td class="py-4 pl-4">
+                <a id="username-edit" class="cursor-pointer font-medium text-blue-600 hover:underline"
+                    hx-get="{% url 'profile-usernamechange' %}"
+                    hx-target="#username"
+                    hx-swap="innerHTML" >
+                    Edit
+                </a>
+            </td>
+        </tr>
+
+        <tr class="">
             <th scope="row" class="py-4 text-base font-bold text-gray-900">
                 Delete Account
             </th>

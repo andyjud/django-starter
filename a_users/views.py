@@ -4,6 +4,7 @@ from allauth.account.utils import send_email_confirmation
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from django.contrib.auth.views import redirect_to_login
 from django.contrib import messages
 from .forms import *
 
@@ -14,7 +15,7 @@ def profile_view(request, username=None):
         try:
             profile = request.user.profile
         except:
-            return redirect('account_login')
+            return redirect_to_login(request.get_full_path())
     return render(request, 'a_users/profile.html', {'profile':profile})
 
 
@@ -68,10 +69,30 @@ def profile_emailchange(request):
             
             return redirect('profile-settings')
         else:
-            messages.warning(request, 'Form not valid')
+            messages.warning(request, 'Email not valid or already in use')
             return redirect('profile-settings')
         
-    return redirect('home')
+    return redirect('profile-settings')
+
+
+@login_required
+def profile_usernamechange(request):
+    if request.htmx:
+        form = UsernameForm(instance=request.user)
+        return render(request, 'partials/username_form.html', {'form':form})
+    
+    if request.method == 'POST':
+        form = UsernameForm(request.POST, instance=request.user)
+        
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Username updated successfully.')
+            return redirect('profile-settings')
+        else:
+            messages.warning(request, 'Username not valid or already in use')
+            return redirect('profile-settings')
+    
+    return redirect('profile-settings')    
 
 
 @login_required
