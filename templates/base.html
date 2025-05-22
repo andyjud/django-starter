@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Template website">
+    <meta name="description" content="Django Template">
     <title>Project Title</title>
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/htmx.org@2.0.2"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
     {% django_htmx_script %}
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,12 +24,17 @@
         h2 {
             @apply text-xl font-bold mb-2
         }
+    	h3 {
+            @apply text-lg font-bold
+        }
         p {
             @apply mb-4
         }
         .button, button, [type='submit'], [type='button'] {
-            @apply bg-indigo-600 text-white font-bold px-6 py-4 inline-block 
-            rounded-lg shadow-lg transition-all cursor-pointer
+            @apply bg-indigo-600 text-white font-bold rounded-lg shadow-lg transition-all cursor-pointer
+        }
+        .button, button a, [type='submit'], [type='button'] {
+            @apply px-6 py-4 inline-block 
         }
         .button:hover, button:hover, [type='submit']:hover, [type='button']:hover {
             @apply bg-indigo-700
@@ -94,10 +99,10 @@
         input[name="remember"] {
             @apply w-auto
         }
-        .alert-info { @apply bg-sky-600 }
-        .alert-success { @apply bg-emerald-600 }
-        .alert-warning { @apply bg-orange-600 }
-        .alert-danger { @apply bg-red-600 }
+        .alert-info { @apply bg-sky-500 }
+        .alert-success { @apply bg-green-500 }
+        .alert-warning { @apply bg-red-500 }
+        .alert-danger { @apply bg-red-500 }
     </style>
 </head>
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' class="{% block class %}{% endblock class %}">

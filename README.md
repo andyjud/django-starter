@@ -1,10 +1,11 @@
-#### Video Tutorial of this project
+#### Video Tutorial for this project
 https://youtu.be/SQ4A7Q6_md8
 <br><br>
 
 #### Getting the files
-Download zip file or <br>
-Clone with git + remove git folder
+Download zip file<br> 
+or <br>
+git clone command (need git to be installed) and remove git folder afterwards
 ```
 git clone https://github.com/andyjud/django-starter.git . && rm -rf .git
 ```
@@ -21,9 +22,8 @@ source venv/bin/activate
 
 ###### # Windows
 ```
-pip install virtualenv 
-virtualenv venv 
-venv\Scripts\activate.bat 
+python3 -m venv venv
+.\venv\Scripts\activate.bat
 ```
 
 <br>

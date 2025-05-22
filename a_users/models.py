@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.templatetags.static import static
+from django.conf import settings
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -21,4 +21,4 @@ class Profile(models.Model):
     def avatar(self):
         if self.image:
             return self.image.url
-        return static("images/avatar.svg")
+        return f'{settings.STATIC_URL}images/avatar.svg'
