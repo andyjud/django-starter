@@ -1,0 +1,24 @@
+[project]
+name = "django-starter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django>=5.2.1",
+    "django-allauth[mfa]>=65.8.1",
+    "django-cleanup>=9.0.0",
+    "django-htmx>=1.23.0",
+    "django-dbbackup>=4.3.0",
+    "django-allauth-2fa>=0.11.1",
+    "django-environ>=0.12.0",
+    "django-protected-media>=1.0.2",
+    "django-widget-tweaks>=1.5.0",
+    "django-extensions>=4.1",
+    "pillow>=11.2.1",
+]
+
+[dependency-groups]
+dev = [
+    "djlint>=1.36.4",
+]
