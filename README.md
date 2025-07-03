@@ -23,8 +23,10 @@ source venv/bin/activate
 ###### # Windows
 ```
 python3 -m venv venv
-.\venv\Scripts\activate.bat
-```
+Powershell: .\venv\Scripts\Activate.ps1
+( or Command Prompt: venv\Scripts\activate )
+( or Git Bash: source venv/Scripts/activate )
+
 
 <br>
 
