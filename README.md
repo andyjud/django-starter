@@ -24,9 +24,11 @@ source venv/bin/activate
 ```
 python3 -m venv venv
 Powershell: .\venv\Scripts\Activate.ps1
+```
+```
 ( or Command Prompt: venv\Scripts\activate )
 ( or Git Bash: source venv/Scripts/activate )
-
+```
 
 <br>
 
