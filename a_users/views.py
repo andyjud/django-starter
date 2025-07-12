@@ -65,6 +65,7 @@ def profile_emailchange(request):
             # Then Signal updates emailaddress and set verified to False
             
             # Then send confirmation email 
+            # send_email_confirmation() will be deprecated soon!
             send_email_confirmation(request, request.user)
             
             return redirect('profile-settings')
