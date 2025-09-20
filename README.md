@@ -2,6 +2,18 @@
 https://youtu.be/SQ4A7Q6_md8
 <br><br>
 
+#### Packages
+
+Django                5.2.4<br>
+django-allauth        65.9.0<br>
+django-browser-reload 1.18.0<br>
+django-cleanup        9.0.0<br>
+django-htmx           1.23.2<br>
+pillow                11.3.0<br>
+
+<br><br>
+
+
 #### Getting the files
 Download zip file<br> 
 or <br>
