@@ -46,7 +46,6 @@ python3 -m venv venv
 
 #### - Install dependencies
 ```
-pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
@@ -63,6 +62,7 @@ python manage.py createsuperuser
 #### - Run application
 ```
 python manage.py runserver
+http://localhost:8000
 ```
 
 <br>
