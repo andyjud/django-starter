@@ -5,7 +5,7 @@
     <wrapper
             class="block h-[calc(100vh-80px)] pt-8 pb-4 px-4 max-w-7xl mx-auto">
 
-        <h1 class="mb-8">Message Board</h1>
+        <h1 class="mb-8">Message Board {{ message_board }}</h1>
 
         <div id="messageboard"
              class="grid md:grid-cols-3 lg:grid-cols-4 h-5/6 bg-white md:shadow-2xl md:rounded-2xl relative">
@@ -14,58 +14,26 @@
                  class="flex flex-col md:col-span-2 lg:col-span-3 relative overflow-y-auto h-full">
 
                 <div class="flex flex-col gap-6 px-4 pt-8 md:px-10 grow">
-
-                    <article class="flex gap-4 md:gap-6">
-                        <a class="contents" href="">
-                            <img class="w-10 h-10 md:w-14 md:h-14 object-cover rounded-full"
-                                 src="https://pbs.twimg.com/profile_images/508601156767997952/fFTdKUf2_400x400.jpeg">
-                        </a>
-                        <div class="bg-white p-4 w-full rounded-xl border-2 border-gray-200">
-                            <div class="flex flex-col md:flex-row justify-between text-xs pb-3 text-zinc-500">
-                                <div>
-                                    <span class="font-bold text-base text-black mr-1">Bart</span>@bart
+                    {% for message in message_board.messages.all reversed %}
+                        <article class="flex gap-4 md:gap-6">
+                            <a class="contents"
+                               href="{% url 'profile' message.author.username %}">
+                                <img class="w-10 h-10 md:w-14 md:h-14 object-cover rounded-full"
+                                     src="{{ message.author.profile.avatar }}">
+                            </a>
+                            <div class="bg-white p-4 w-full rounded-xl border-2 border-gray-200">
+                                <div class="flex flex-col md:flex-row justify-between text-xs pb-3 text-zinc-500">
+                                    <div>
+                                        <span class="font-bold text-base text-black mr-1">{{ message.author.profile.name }}</span>@{{ message.author.username }}
+                                    </div>
+                                    <div>{{ message.created_at }}
+                                        ({{ message.created_at|timesince }})
+                                    </div>
                                 </div>
-                                <div>May 4, 2024, 11:11AM (1 hours ago)</div>
+                                <div>{{ message.body }}</div>
                             </div>
-                            <div>Hi everybody, I am looking for a studio flat!
-                                DM me!
-                            </div>
-                        </div>
-                    </article>
-                    <article class="flex gap-4 md:gap-6">
-                        <a class="contents" href="">
-                            <img class="w-10 h-10 md:w-14 md:h-14 object-cover rounded-full"
-                                 src="https://img.icons8.com/color/48/cookie-monster.png">
-                        </a>
-                        <div class="bg-white p-4 w-full rounded-xl border-2 border-gray-200">
-                            <div class="flex flex-col md:flex-row justify-between text-xs pb-3 text-zinc-500">
-                                <div>
-                                    <span class="font-bold text-base text-black mr-1">Pete</span>@pete
-                                </div>
-                                <div>May 4, 2024, 11:20AM (1 hours ago)</div>
-                            </div>
-                            <div>I am looking for a flat share with cool dudes!
-                                DM me!
-                            </div>
-                        </div>
-                    </article>
-                    <article class="flex gap-4 md:gap-6">
-                        <a class="contents" href="">
-                            <img class="w-10 h-10 md:w-14 md:h-14 object-cover rounded-full"
-                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnwDx5HMZ9DJEtj13JNqikTHJuoYwSHQTUhw&s">
-                        </a>
-                        <div class="bg-white p-4 w-full rounded-xl border-2 border-gray-200">
-                            <div class="flex flex-col md:flex-row justify-between text-xs pb-3 text-zinc-500">
-                                <div>
-                                    <span class="font-bold text-base text-black mr-1">Anne</span>@anne
-                                </div>
-                                <div>May 4, 2024, 11:22AM (1 hours ago)</div>
-                            </div>
-                            <div>We got a spare room in our lovely home, me and
-                                my boyfriend are very nice.
-                            </div>
-                        </div>
-                    </article>
+                        </article>
+                    {% endfor %}
 
                 </div>
 
@@ -73,13 +41,13 @@
                     <div class="flex gap-4 md:gap-6">
                         <div class="contents">
                             <img class="w-10 h-10 md:w-14 md:h-14 object-cover rounded-full"
-                                 src="https://pbs.twimg.com/profile_images/508601156767997952/fFTdKUf2_400x400.jpeg">
+                                 src="{{ user.profile.avatar }}">
                         </div>
                         <div class="w-full rounded-xl">
                             <form method="POST" class="w-full">
-                                <input type="text" name="body"
-                                       placeholder="Post a message ..."
-                                       class="p-4 text-black" maxlength="300">
+                                {#   <input type="text" name="body" placeholder="Post a message ..." class="p-4 text-black" maxlength="300">#}
+                                {% csrf_token %}
+                                {{ form }}
                             </form>
                         </div>
                     </div>
@@ -89,73 +57,37 @@
 
             <div class="p-6 hidden md:block">
                 <div class="mb-12">
-                    <h2>Subscribe</h2>
-                    <div class="block text-sm mb-2">Subscribe to this Message
-                        Board to get email notifications and newsletters
-                    </div>
-                    <a href=""
-                       class="inline-block bg-black hover:bg-emerald-500 text-white font-bold rounded-full py-3 px-4">Subscribe</a>
+                    {% if user in message_board.subscribers.all %}
+                        <h2 class="mb-2">You are subscribed!</h2>
+                        <a href="{% url 'subscribe_view' %}"
+                           class="inline-block bg-black hover:bg-red-500 text-white font-bold rounded-full py-3 px-4">Unsubscribe</a>
+                    {% else %}
+                        <h2>Subscribe</h2>
+                        <div class="block text-sm mb-2">Subscribe to this
+                            Message
+                            Board to get email notifications and newsletters
+                        </div>
+                        <a href="{% url 'subscribe_view' %}"
+                           class="inline-block bg-emerald-800 hover:bg-emerald-500 text-white font-bold rounded-full py-3 px-4">Subscribe</a>
+                    {% endif %}
                 </div>
 
                 <div class="rounded-2xl border-2 border-gray-200 p-4">
-                    <h2>5 subscribers</h2>
+                    <h2>{{ message_board.subscribers.count }} Subscriber{{ message_board.subscribers.count|pluralize }}</h2>
                     <ul class="grid grid-cols-3">
-                        <li class="block mb-2">
-                            <a href="">
+                        {% for subscriber in message_board.subscribers.all %}
+                            <li class="block mb-2">
+                            <a href="{% url 'profile' subscriber.username %}">
                                 <div class="flex justify-center">
                                     <img class="w-16 h-16 rounded-full object-cover"
-                                         src="https://img.icons8.com/color/48/cookie-monster.png">
+                                         src="{{ subscriber.profile.avatar }}">
                                 </div>
                                 <div class="font-bold text-sm text-center">
-                                    User
+                                    {{ subscriber.username|title }}
                                 </div>
                             </a>
                         </li>
-                        <li class="block mb-2">
-                            <a href="">
-                                <div class="flex justify-center">
-                                    <img class="w-16 h-16 rounded-full object-cover"
-                                         src="https://img.icons8.com/color/48/cookie-monster.png">
-                                </div>
-                                <div class="font-bold text-sm text-center">
-                                    User
-                                </div>
-                            </a>
-                        </li>
-                        <li class="block mb-2">
-                            <a href="">
-                                <div class="flex justify-center">
-                                    <img class="w-16 h-16 rounded-full object-cover"
-                                         src="https://img.icons8.com/color/48/cookie-monster.png">
-                                </div>
-                                <div class="font-bold text-sm text-center">
-                                    User
-                                </div>
-                            </a>
-                        </li>
-                        <li class="block mb-2">
-                            <a href="">
-                                <div class="flex justify-center">
-                                    <img class="w-16 h-16 rounded-full object-cover"
-                                         src="https://img.icons8.com/color/48/cookie-monster.png">
-                                </div>
-                                <div class="font-bold text-sm text-center">
-                                    User
-                                </div>
-                            </a>
-                        </li>
-                        <li class="block mb-2">
-                            <a href="">
-                                <div class="flex justify-center">
-                                    <img class="w-16 h-16 rounded-full object-cover"
-                                         src="https://img.icons8.com/color/48/cookie-monster.png">
-                                </div>
-                                <div class="font-bold text-sm text-center">
-                                    User
-                                </div>
-                            </a>
-                        </li>
-
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
