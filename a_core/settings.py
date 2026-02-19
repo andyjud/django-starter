@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     
     # Third party
     'django_browser_reload',
+    "django_celery_results",
 ]
 
 SITE_ID = 1
@@ -167,3 +168,7 @@ ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 CELERY_BROKER_URL = "redis://localhost:6379/0"
 # Get rid of warnings when celery starts
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+# Prevents deletion of tasks after restart
+CELERY_RESULT_BACKEND = "django-db"
+CELERY_RESULT_EXTENDED = True  # Migrate afterward
+
