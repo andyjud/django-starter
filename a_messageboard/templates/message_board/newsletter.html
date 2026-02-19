@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <title>Monthly Newsletter</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Source Code Pro', Helvetica, Arial, sans-serif; background-color: #f9f9f9; color: #333333;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; margin-top: 40px; margin-bottom: 40px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <!-- Header -->
+        <tr>
+            <td align="center" style="padding: 40px 20px 20px 20px;">
+                <h1 style="margin: 0; font-size: 24px; letter-spacing: 2px; text-transform: uppercase; color: #282;">The Monthly Edit</h1>
+            </td>
+        </tr>
+
+        <!-- Welcome Section -->
+        <tr>
+            <td align="center" style="padding: 20px 40px;">
+                <p style="font-size: 18px; line-height: 1.6; color: #555555;">
+                    Hello {{ name }},
+                </p>
+                <p style="font-size: 16px; line-height: 1.8; color: #666666; margin-bottom: 30px;">
+                    We are so happy to have you here! Welcome to our very first monthly newsletter. Each month, we'll be sharing curated insights, updates, and stories directly to your inbox.
+                </p>
+                <div style="width: 40px; height: 2px; background-color: #282; margin-bottom: 30px;"></div>
+            </td>
+        </tr>
+
+        <!-- Stay Tuned Section -->
+        <tr>
+            <td align="center" style="padding: 20px 40px 60px 40px;">
+                <h2 style="font-size: 20px; margin-bottom: 15px; color: #282;">Stay Tuned</h2>
+                <p style="font-size: 15px; line-height: 1.6; color: #888888; margin-bottom: 25px;">
+                    Our deep dive into this month's top trends is coming your way shortly. We have some exciting projects in the works that we can't wait to show you.
+                </p>
+                <a href="#" style="background-color: #282; color: #ffffff; padding: 12px 30px; text-decoration: none; font-size: 14px; border-radius: 4px; font-weight: bold; letter-spacing: 1px;">VISIT OUR BLOG</a>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td align="center" style="padding: 30px; background-color: #003f1f; border-top: 1px solid #eeeeee;">
+                <p style="font-size: 12px; color: #999999; margin: 0;">
+                    &copy; 2024 Your Brand Name. All rights reserved. <br>
+                    <a href="{% url 'profile-settings' %}" style="color: #fff; text-decoration: underline; font-weight: bold">Unsubscribe</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

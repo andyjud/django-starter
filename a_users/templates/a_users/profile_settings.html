@@ -2,39 +2,44 @@
 
 {% block content %}
 
-<h1 class="mb-8">Account Settings</h1>
+    <h1 class="mb-8">Account Settings</h1>
 
-<table class="w-full text-sm text-left text-gray-500">
-    <tbody>
+    <table class="w-full text-sm text-left text-gray-500">
+        <tbody>
         <tr>
-            <th scope="row" class="pt-4 pb-1 text-base font-bold text-gray-900">
+            <th scope="row"
+                class="pt-4 pb-1 text-base font-bold text-gray-900">
                 Email address
             </th>
             <td id="email-address" class="pt-4 pb-1 pl-4">
-                {% if user.email %}{{ user.email }}{% else %}No Email{% endif %}
+                {% if user.email %}{{ user.email }}{% else %}No
+                    Email{% endif %}
             </td>
-            <td class="pt-4 pb-1 pl-4">
-                <a id="email-edit" class="cursor-pointer font-medium text-blue-600 hover:underline"
-                    hx-get="{% url 'profile-emailchange' %}"
-                    hx-target="#email-address"
-                    hx-swap="innerHTML" >
+            <td class="pt-4 pb-1 pl-4 min-w-20">
+                <a id="email-edit"
+                   class="cursor-pointer font-medium text-blue-600 hover:underline"
+                   hx-get="{% url 'profile-emailchange' %}"
+                   hx-target="#email-address"
+                   hx-swap="innerHTML">
                     Edit
                 </a>
             </td>
         </tr>
 
         <tr class="border-b">
-            <th scope="row" class="pb-4 font-medium text-gray-900">  
+            <th scope="row" class="pb-4 font-medium text-gray-900">
             </th>
             <td class="pb-4 pl-4">
                 {% if user.emailaddress_set.first.verified %}
-                <span class="text-green-500">Verified</span>{% else %}
-                <span class="text-amber-500">Not verified</span>
+                    <span class="text-green-500">Verified</span>{% else %}
+                    <span class="text-amber-500">Not verified</span>
                 {% endif %}
             </td>
             <td class="pb-4 pl-4">
-                <a href="{% url 'profile-emailverify' %}" class="font-medium text-blue-600 hover:underline">
-                    {% if not user.emailaddress_set.first.verified %}Verify{% endif %}
+                <a href="{% url 'profile-emailverify' %}"
+                   class="font-medium text-blue-600 hover:underline">
+                    {% if not user.emailaddress_set.first.verified %}
+                        Verify{% endif %}
                 </a>
             </td>
         </tr>
@@ -47,11 +52,41 @@
                 {{ user.username }}
             </td>
             <td class="py-4 pl-4">
-                <a id="username-edit" class="cursor-pointer font-medium text-blue-600 hover:underline"
-                    hx-get="{% url 'profile-usernamechange' %}"
-                    hx-target="#username"
-                    hx-swap="innerHTML" >
+                <a id="username-edit"
+                   class="cursor-pointer font-medium text-blue-600 hover:underline"
+                   hx-get="{% url 'profile-usernamechange' %}"
+                   hx-target="#username"
+                   hx-swap="innerHTML">
                     Edit
+                </a>
+            </td>
+        </tr>
+
+        <tr class="border-b">
+            <th scope="row"
+                class="align-top pt-4 pb-1 text-base font-bold text-gray-900">
+                Newsletter
+            </th>
+            <td class="pt-4 pb-1 pl-4">
+                <div>
+                    Monthly Goodies
+                </div>
+                <div class="pt-1 pb-3">
+                    {% if user.profile.is_newsletter_subscribed %}
+                        <span class="text-green-500">Subscribed</span>
+                    {% else %}
+                        <span class="text-red-600">Unsubscribed</span>
+                    {% endif %}
+                </div>
+            </td>
+            <td class="align-top pt-4 pb-1 pl-4">
+                <a href="{% url 'profile-newsletter' %}"
+                   class="text-blue-600 font-medium hover:underline">
+                    {% if user.profile.is_newsletter_subscribed %}
+                        Cancel
+                    {% else %}
+                        Activate
+                    {% endif %}
                 </a>
             </td>
         </tr>
@@ -64,13 +99,14 @@
                 Once deleted, account is gone. Forever.
             </td>
             <td class="py-4 pl-4">
-                <a href="{% url 'profile-delete' %}" class="font-medium text-red-600 hover:underline">
+                <a href="{% url 'profile-delete' %}"
+                   class="font-medium text-red-600 hover:underline">
                     Delete
                 </a>
             </td>
         </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
 
 {% endblock %}

@@ -9,3 +9,4 @@ redis==5.0.4
 celery==5.4.0
 flower
 django-celery-results==2.5.1
+django-celery-beat==2.8.1

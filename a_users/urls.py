@@ -10,4 +10,5 @@ urlpatterns = [
     path('usernamechange/', profile_usernamechange, name="profile-usernamechange"),
     path('emailverify/', profile_emailverify, name="profile-emailverify"),
     path('delete/', profile_delete_view, name="profile-delete"),
+    path('newsletter/', newsletter_subscribe, name="profile-newsletter"),
 ]

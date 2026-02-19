@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 
 from a_messageboard.forms import MessageCreateForm
@@ -57,3 +57,17 @@ def send_message_to_users(message: Message):
         #     target=send_email_thread, args=(subject, body, subscriber))
         # email_thread.start()
         send_email_task.delay(subject, body, subscriber.email)
+
+
+def unsubscribe_view(request):
+    pass
+
+
+def is_staff(user):
+    return user.is_staff
+
+
+@user_passes_test(is_staff)
+def newsletter_view(request):
+    user = request.user
+    return render(request, "message_board/newsletter.html", {"name": user})
