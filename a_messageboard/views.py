@@ -1,12 +1,10 @@
-import threading
-
-from django.core.mail import EmailMessage
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from a_messageboard.models import MessageBoard, Message
 from a_messageboard.forms import MessageCreateForm
+from a_messageboard.models import MessageBoard, Message
+from a_messageboard.tasks import send_email_task
 
 
 @login_required
@@ -23,8 +21,8 @@ def message_board_view(request):
                 message = form.save(commit=False)
                 message.author = user
                 message.message_board = message_board
-                message.save()
                 send_message_to_users(message)
+                message.save()
         else:
             messages.warning(request, "You need to be subscribed! ⚠")
         return redirect("message_board_index")
@@ -54,10 +52,8 @@ def send_message_to_users(message: Message):
     subject = f"New message from {author}"
     body = f"{author}: {message.body}\n\nRegards from\nMy Message Board 📩"
 
-    def send_email_thread(subject_, body_, subscriber_):
-        email = EmailMessage(subject_, body_, to=[subscriber_.email])
-        email.send()
-
     for subscriber in subscribers:
-        email_thread = threading.Thread(target=send_email_thread, args=(subject, body, subscriber))
-        email_thread.start()
+        # email_thread = threading.Thread(
+        #     target=send_email_thread, args=(subject, body, subscriber))
+        # email_thread.start()
+        send_email_task.delay(subject, body, subscriber.email)

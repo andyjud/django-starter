@@ -163,3 +163,7 @@ EMAIL_HOST_USER = get_secret("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")
 ACCOUNT_LOGIN_METHODS = {'email', 'username'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+# Get rid of warnings when celery starts
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
