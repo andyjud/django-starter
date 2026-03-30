@@ -5,8 +5,8 @@ https://youtu.be/SQ4A7Q6_md8
 
 #### Getting the files
 Download zip file<br> 
-or with<br>
-git clone command
+or<br>
+run git clone command in empty folder
 ```
 git clone https://github.com/andyjud/django-starter.git . && rm -rf .git
 ```
