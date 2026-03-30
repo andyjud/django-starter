@@ -2,6 +2,13 @@
 https://youtu.be/SQ4A7Q6_md8
 <br><br>
 
+#### Upgrades
+- send_confirmation instead of send_email_confirmation<br>
+- CustomUser Model instead of Default User<br>
+- htmx header<br>
+- Option to use UV for Dependency Management<br>
+<br><br>
+
 
 #### Getting the files
 Download zip file<br> 
