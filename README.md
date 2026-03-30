@@ -15,26 +15,36 @@ git clone https://github.com/andyjud/django-starter.git . && rm -rf .git
 
 ## Setup
 
-#### - Install Dependencies with UV (Recommended)
+#### Install Dependencies with UV (Recommended)
 
 ##### Install UV
 uv: https://docs.astral.sh/uv/ 
 ```
 pip install uv
 ```
+
 ##### Install dependencies
 ```
 uv sync
 ```
+
 ##### Migrate to database
 ```
 uv run manage.py makemigrations
 uv run manage.py migrate
 uv run manage.py createsuperuser
+uv run manage.py runserver
 ```
+
+##### Run application
+```
+uv run manage.py runserver
+http://localhost:8000
+```
+
 <br><br>
 
-#### - Install Dependencies with pip
+#### Install Dependencies with pip
 ##### # Mac
 ```
 python3 -m venv .venv
@@ -47,12 +57,10 @@ python3 -m venv .venv
 (Powershell:) .\venv\Scripts\Activate.ps1
 ```
 
-
 ##### Install dependencies
 ```
 pip install -r requirements.txt
 ```
-
 
 ##### Migrate to database
 ```
@@ -61,10 +69,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-<br><br>
-
-
-#### - Run application
+##### Run application
 ```
 python manage.py runserver
 http://localhost:8000
