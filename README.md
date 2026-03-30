@@ -47,7 +47,7 @@ python manage.py createsuperuser
 
 ##### Run application
 ```
-uv run manage.py runserver
+python manage.py runserver
 ```
 http://localhost:8000
 
