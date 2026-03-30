@@ -3,7 +3,7 @@ https://youtu.be/SQ4A7Q6_md8
 <br><br>
 
 #### Upgrades
-- send_confirmation instead of send_email_confirmation (remove the = in the email verification link sent to terminal)<br>
+- send_confirmation instead of send_email_confirmation (remove the = in the email verification link sent to the terminal)<br>
 - CustomUser Model instead of Default User<br>
 - Global CSRF header for HTMX<br>
 - Option to use UV for Dependency Management<br>
