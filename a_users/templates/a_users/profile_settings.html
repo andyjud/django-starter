@@ -10,10 +10,10 @@
             <th scope="row" class="pt-4 pb-1 text-base font-bold text-gray-900">
                 Email address
             </th>
-            <td id="email-address" class="pt-4 pb-1 pl-4">
+            <td id="email-address" class="pt-4 pb-1 px-6">
                 {% if user.email %}{{ user.email }}{% else %}No Email{% endif %}
             </td>
-            <td class="pt-4 pb-1 pl-4">
+            <td class="pt-4 pb-1 px-6">
                 <a id="email-edit" class="cursor-pointer font-medium text-blue-600 hover:underline"
                     hx-get="{% url 'profile-emailchange' %}"
                     hx-target="#email-address"
@@ -22,17 +22,16 @@
                 </a>
             </td>
         </tr>
-
         <tr class="border-b">
             <th scope="row" class="pb-4 font-medium text-gray-900">  
             </th>
-            <td class="pb-4 pl-4">
+            <td class="px-6 pb-4">
                 {% if user.emailaddress_set.first.verified %}
                 <span class="text-green-500">Verified</span>{% else %}
                 <span class="text-amber-500">Not verified</span>
                 {% endif %}
             </td>
-            <td class="pb-4 pl-4">
+            <td class="px-6 pb-4">
                 <a href="{% url 'profile-emailverify' %}" class="font-medium text-blue-600 hover:underline">
                     {% if not user.emailaddress_set.first.verified %}Verify{% endif %}
                 </a>
@@ -41,29 +40,12 @@
 
         <tr class="border-b">
             <th scope="row" class="py-4 text-base font-bold text-gray-900">
-                Username
-            </th>
-            <td id="username" class="py-4 pl-4">
-                {{ user.username }}
-            </td>
-            <td class="py-4 pl-4">
-                <a id="username-edit" class="cursor-pointer font-medium text-blue-600 hover:underline"
-                    hx-get="{% url 'profile-usernamechange' %}"
-                    hx-target="#username"
-                    hx-swap="innerHTML" >
-                    Edit
-                </a>
-            </td>
-        </tr>
-
-        <tr class="">
-            <th scope="row" class="py-4 text-base font-bold text-gray-900">
                 Delete Account
             </th>
-            <td class="py-4 pl-4">
+            <td class="px-6 py-4">
                 Once deleted, account is gone. Forever.
             </td>
-            <td class="py-4 pl-4">
+            <td class="px-6 py-4">
                 <a href="{% url 'profile-delete' %}" class="font-medium text-red-600 hover:underline">
                     Delete
                 </a>

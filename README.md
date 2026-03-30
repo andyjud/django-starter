@@ -1,45 +1,44 @@
-#### Video Tutorial for this project
+#### Video Tutorial to build this project
 https://youtu.be/SQ4A7Q6_md8
-<br><br>
-
-#### Packages
-
-Django                5.2.4<br>
-django-allauth        65.9.0<br>
-django-browser-reload 1.18.0<br>
-django-cleanup        9.0.0<br>
-django-htmx           1.23.2<br>
-pillow                11.3.0<br>
-
 <br><br>
 
 
 #### Getting the files
 Download zip file<br> 
-or <br>
-git clone command (need git to be installed) and remove git folder afterwards
+or with<br>
+git clone (and remove git folder afterwards)
 ```
 git clone https://github.com/andyjud/django-starter.git . && rm -rf .git
 ```
 <br><br><br>
 
+
 ## Setup
 
-#### - Create Virtual Environment
+#### Install Dependencies with uv (Recommended)
+uv: https://docs.astral.sh/uv/ 
+pip install uv
+
+##### Install dependencies
+uv sync
+
+##### Migrate to database
+uv run manage.py makemigrations
+uv run manage.py migrate
+uv run manage.py createsuperuser
+
+
+#### Install Dependencies with pip
 ###### # Mac
 ```
-python3 -m venv venv
+python3 -m venv .venv
 source venv/bin/activate
 ```
 
 ###### # Windows
 ```
-python3 -m venv venv
+python3 -m venv .venv
 (Powershell:) .\venv\Scripts\Activate.ps1
-```
-```
-(or Command Prompt:) venv\Scripts\activate 
-(or Git Bash:) source venv/Scripts/activate
 ```
 
 <br>
@@ -53,11 +52,13 @@ pip install -r requirements.txt
 
 #### - Migrate to database
 ```
+python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
 ```
 
 <br>
+
 
 #### - Run application
 ```
@@ -65,14 +66,6 @@ python manage.py runserver
 http://localhost:8000
 ```
 
-<br>
 
-#### - Generate Secret Key ( ! Important for deployment ! )
-```
-python manage.py shell
-from django.core.management.utils import get_random_secret_key
-print(get_random_secret_key())
-exit()
-```
 
 

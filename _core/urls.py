@@ -1,5 +1,5 @@
 """
-URL configuration for a_core project.
+URL configuration for _core project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -24,12 +24,12 @@ from a_home.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', include('a_home.urls')),
+    path('', home_view, name="home"),
     path('profile/', include('a_users.urls')),
     path('@<username>/', profile_view, name="profile"),
 ]
 
-# Only used when DEBUG=True, whitenoise can serve files when DEBUG=False
+# Only used in development
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += [

@@ -1,33 +1,28 @@
 from django.dispatch import receiver
 from django.db.models.signals import post_save, pre_save
 from allauth.account.models import EmailAddress
-from django.contrib.auth.models import User
-from .models import Profile
+from django.contrib.auth import get_user_model
 
-@receiver(post_save, sender=User)       
+User = get_user_model()
+
+@receiver(post_save, sender=User)
 def user_postsave(sender, instance, created, **kwargs):
     user = instance
-    
-    # add profile if user is created
-    if created:
-        Profile.objects.create(
-            user = user,
-        )
-    else:
-        # update allauth emailaddress if exists 
+
+    if not created:
         try:
-            email_address = EmailAddress.objects.get_primary(user)
+            email_address = EmailAddress.objects.get(user=user, primary=True)
             if email_address.email != user.email:
                 email_address.email = user.email
                 email_address.verified = False
                 email_address.save()
-        except:
-            # if allauth emailaddress doesn't exist create one
+        except EmailAddress.DoesNotExist:
+            # Create EmailAddress if missing
             EmailAddress.objects.create(
-                user = user,
-                email = user.email, 
-                primary = True,
-                verified = False
+                user=user,
+                email=user.email,
+                primary=True,
+                verified=False
             )
         
         

@@ -1,6 +1,6 @@
-Django==5.2.4
-django-allauth==65.9.0
-django-browser-reload==1.18.0
+Django==6.0.3
+django-allauth==65.15.0
+django-browser-reload==1.21.0
 django-cleanup==9.0.0
-django-htmx==1.23.2
-pillow==11.3.0
+django-htmx==1.27.0
+pillow==12.1.1

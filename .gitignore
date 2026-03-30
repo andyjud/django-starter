@@ -1,5 +1,4 @@
-venv/
-node/
+.venv/
 media/
 __pycache__/
 db.sqlite3
