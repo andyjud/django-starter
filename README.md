@@ -59,6 +59,7 @@ python3 -m venv .venv
 ##### Install dependencies
 ```
 pip install -r requirements.txt
+pip install --upgrade pip
 ```
 
 ##### Migrate to database
