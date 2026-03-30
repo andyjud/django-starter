@@ -29,7 +29,6 @@ uv sync
 
 ##### Migrate to database
 ```
-uv run manage.py makemigrations
 uv run manage.py migrate
 uv run manage.py createsuperuser
 ```
@@ -64,7 +63,6 @@ pip install -r requirements.txt
 
 ##### Migrate to database
 ```
-python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
 ```
