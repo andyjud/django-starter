@@ -36,8 +36,8 @@ uv run manage.py createsuperuser
 ##### Run application
 ```
 uv run manage.py runserver
-http://localhost:8000
 ```
+http://localhost:8000
 
 <br><br>
 
@@ -70,5 +70,5 @@ python manage.py createsuperuser
 ##### Run application
 ```
 python manage.py runserver
-http://localhost:8000
 ```
+http://localhost:8000
