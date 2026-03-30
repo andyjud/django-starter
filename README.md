@@ -6,16 +6,15 @@ https://youtu.be/SQ4A7Q6_md8
 #### Getting the files
 Download zip file<br> 
 or with<br>
-git clone (and remove git folder afterwards)
+git clone command
 ```
 git clone https://github.com/andyjud/django-starter.git . && rm -rf .git
 ```
 <br><br>
 
 
-## Setup
+## Setup with UV (Recommended)
 
-#### Install Dependencies with UV (Recommended)
 
 ##### Install UV
 uv: https://docs.astral.sh/uv/ 
@@ -43,7 +42,9 @@ http://localhost:8000
 
 <br><br>
 
-#### Install Dependencies with pip
+
+## Setup with with pip
+
 ##### Create Virtual Environment on Mac
 ```
 python3 -m venv .venv
