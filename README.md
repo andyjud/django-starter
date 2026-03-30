@@ -34,10 +34,15 @@ pip install uv
 uv sync
 ```
 
+##### Activate Virtual Environment (Mac)
+```
+source .venv/bin/activate
+```
+
 ##### Migrate to database
 ```
-uv run manage.py migrate
-uv run manage.py createsuperuser
+python manage.py migrate
+python manage.py createsuperuser
 ```
 
 ##### Run application
