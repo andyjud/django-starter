@@ -33,7 +33,6 @@ uv sync
 uv run manage.py makemigrations
 uv run manage.py migrate
 uv run manage.py createsuperuser
-uv run manage.py runserver
 ```
 
 ##### Run application
@@ -45,16 +44,16 @@ http://localhost:8000
 <br><br>
 
 #### Install Dependencies with pip
-##### # Mac
+##### Create Virtual Environment on Mac
 ```
 python3 -m venv .venv
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
-##### # Windows
+##### Create Virtual Environment on Windows
 ```
 python3 -m venv .venv
-(Powershell:) .\venv\Scripts\Activate.ps1
+.\venv\Scripts\Activate.ps1
 ```
 
 ##### Install dependencies
