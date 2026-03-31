@@ -74,7 +74,7 @@ wheels = [
 ]
 
 [[package]]
-name = "django-starter"
+name = "my-django-app"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
