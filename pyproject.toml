@@ -1,5 +1,5 @@
 [project]
-name = "my-django-app"
+name = "my-app"
 version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
