@@ -12,23 +12,32 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+from django.templatetags.static import static
+
+from _core.utils import get_secret
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 PROJECT_TITLE = "My App"
+BASE_PROTOCOL = "https://"
+BASE_URL = "domain.com"
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rj#-z^kx3j+1ay397otg6j8m_8#v^$^$jys6&41vy^&6le)ezc'
+SECRET_KEY = get_secret("GET_SECRET", "django-insecure-rj#-z^kx3j+1ay397otg6j8m_8#v^$^$jys6&41vy^&6le)ezc")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
-CSRF_TRUSTED_ORIGINS = [ 'https://*' ]
+INTERNAL_IPS = ['127.0.0.1', 'localhost:5000']
+
+CSRF_TRUSTED_ORIGINS = ["https://*.onrender.com"]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -92,7 +101,7 @@ WSGI_APPLICATION = '_core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
+ENVIRONMENT = get_secret("ENVIRONMENT")
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -137,6 +146,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [ BASE_DIR / 'static' ]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media' 
@@ -148,7 +158,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
 
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": get_secret("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": get_secret("CLOUDINARY_API_KEY"),
+    "API_SECRET": get_secret("CLOUDINARY_API_SECRET")
+}
+
 AUTH_USER_MODEL = 'a_users.CustomUser'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_LOGIN_METHODS = {'email', 'username'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+UNFOLD = {
+    "STYLES": [lambda request: static("css/custom-admin.css")],
+    "SITE_TITLE": "SITE NAME",  # Appears in the browser tab
+    "SITE_HEADER": "Site and Tagline",  # Appears in the sidebar at the top
+    "SITE_SUBHEADER": "Optional",  # Optional sub-text
+}
