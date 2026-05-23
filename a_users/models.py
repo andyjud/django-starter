@@ -2,9 +2,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.templatetags.static import static
 
+
 class CustomUser(AbstractUser):
     image = models.ImageField(upload_to='avatars/', null=True, blank=True)
-    displayname = models.CharField(max_length=20, null=True, blank=True)
+    display_name = models.CharField(max_length=20, null=True, blank=True)
     info = models.TextField(null=True, blank=True) 
 
     def __str__(self):
@@ -12,8 +13,8 @@ class CustomUser(AbstractUser):
     
     @property
     def name(self):
-        if self.displayname:
-            name = self.displayname
+        if self.display_name:
+            name = self.display_name
         else:
             name = self.username 
         return name

@@ -5,10 +5,10 @@ from .models import CustomUser
 class ProfileForm(ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['image', 'displayname', 'info']
+        fields = ['image', 'display_name', 'info']
         widgets = {
             'image': forms.FileInput(),
-            'displayname' : forms.TextInput(attrs={'placeholder': 'Add display name'}),
+            'display_name': forms.TextInput(attrs={'placeholder': 'Add display name'}),
             'info' : forms.Textarea(attrs={'rows':3, 'placeholder': 'Add information'})
         }
         
