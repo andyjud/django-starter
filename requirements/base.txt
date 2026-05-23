@@ -3,7 +3,6 @@ django-unfold==0.87.0
 django-allauth==65.15.0
 django-browser-reload==1.21.0
 django-cleanup==9.0.0
-django-debug-toolbar==6.3.0
 django-htmx==1.27.0
 pillow==12.1.1
 python-decouple==3.8
