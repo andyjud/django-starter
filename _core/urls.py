@@ -26,7 +26,8 @@ admin.site.site_title = settings.UNFOLD['SITE_HEADER']
 admin.site.index_title = "Last Code Update: 20th May 26 22:00"
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls'), name='admin_honeypot'),
+    path('enter/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', home_view, name="home"),
     path('profile/', include('a_users.urls')),

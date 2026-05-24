@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_browser_reload',
+    'admin_honeypot',
     'django_htmx',
 ]
 
