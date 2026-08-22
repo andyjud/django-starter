@@ -2,10 +2,14 @@
 https://youtu.be/SQ4A7Q6_md8
 <br><br>
 
-#### Upgrades
+#### BE AWARE: UPDATES FROM THE OLDER VERSION
+- Now uses the CustomUser Model instead of Django's default User<br>
+- In models get the User with "from django.conf import settings" and "author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)"
+- In views get the User with "from django.contrib.auth import get_user_model" and "User = get_user_model()"
+- No more Profile table, all users properties are now in the Users table, that means instead of {{ message.author.profile.name }} use {{ message.author.name }}, no more profile needed
+  
 - send_confirmation instead of send_email_confirmation (remove the = in the email verification link sent to the terminal)<br>
-- CustomUser Model instead of Default User<br>
-- Global CSRF header for HTMX<br>
+- Project Title was moved to the settings.py file _core > settings.py > PROJECT_TITLE
 - Option to use UV for Dependency Management<br>
 <br><br>
 
