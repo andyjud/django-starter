@@ -2,7 +2,8 @@
 https://youtu.be/SQ4A7Q6_md8
 <br><br>
 
-#### BE AWARE: UPDATES FROM THE OLDER VERSION
+#### Updated: Mar 30, 2026
+#### BE AWARE: UPDATES FROM THE OLDER VERSION 
 - Now uses the CustomUser Model instead of Django's default User<br>
 - In models get the User with "from django.conf import settings" and "author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)"
 - In views get the User with "from django.contrib.auth import get_user_model" and "User = get_user_model()"
