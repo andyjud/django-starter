@@ -85,7 +85,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-##### Run application
+##### Run applications
 ```
 python manage.py runserver
 ```
